@@ -1,0 +1,19 @@
+@startuml
+interface CharDeck
+class Party
+class Character
+
+CharDeck <|-- Party
+CharDeck o-- Character
+
+
+CharDeck : List<Character*> members
+CharDeck : +Character* getNextChar()
+CharDeck : +void shuffleChars()
+
+
+Party : -LList<Character*> members
+Party : -long ID
+Party : -String partyName
+Party : +//mutators()
+@enduml

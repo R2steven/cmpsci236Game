@@ -1,0 +1,60 @@
+@startuml
+class Character
+class Background
+class CharClass
+class Action
+interface CharSheet
+abstract ActionHolder
+enum ActionType
+Struct ActionMods
+
+ActionHolder <|-- Character
+ActionHolder <|-- CharClass
+ActionHolder o-- Action
+Character o-- CharClass
+Character <|-- Background
+CharSheet <|-- ActionHolder
+
+
+CharSheet : +virtual String getSheet()
+
+
+note left of ActionHolder : __getActions()__ should return all Actions,\npaired the action's unmodified cost.
+note right of ActionHolder : __getWeightedActions()__ should return \nthe modified action,cost pair
+ActionHolder : +virtual map<Action*,int> getWeightedActions()
+ActionHolder : +virtual map<Action*,int> getActions()
+ActionHolder : +virtual String getSheet()
+ActionHolder : +virtual String getMods()
+ActionHolder : +virtual String getActionSheet()
+
+
+note left of Character : ActionType modifiers should be\ncumulative over all submods
+Character : -long id
+Character : -String name
+Character : -LList<CharClass*> class
+Character : -const LList<Action*> charActionsWhiteList
+Character : -ActionMods charModifiers
+Character : -BST<Action*> charActions
+Character : //mutators()
+
+
+Background : -const String bkgrndTitle
+Background : -const LList<Action*> bkgrndActionsWhiteList
+Background : -const ActionMods bkgrndModifiers
+
+
+CharClass : -const String classTitle
+CharClass : -const LList<Action*> classActionsWhiteList
+CharClass : -ActionMods classModifiers
+CharClass : -BST<Action*> classActions
+CharClass : //mutators()
+
+
+ActionMods : ActionType = int modifier
+
+
+Action : -ActionType type
+Action : -String description
+Action : -String resolution
+Action : //mutators()
+@enduml

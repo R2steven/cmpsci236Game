@@ -1,0 +1,39 @@
+@startuml
+class LList<class T>
+class BST<class T>
+class Node<class T>
+class T
+
+LList o-- Node
+BST o-- Node
+
+LList : - Node* head
+LList : +T* get(int index)
+LList : +T* getFirst()
+LList : +void add(T* data)
+LList : +void remove(int index)
+LList : +void swap(int first, int second)
+LList : +void rotateLeft()
+
+
+BST : -Node* root
+BST : +T* get(T* data)
+BST : +int getDepth(T* data)
+BST : +void add(T* data)
+BST : +swap(T* data, T* data) //optional
+
+
+Node : <<friend>> LList //optional
+Node : <<friend>> BST //optional
+Node : -Node* left
+Node : -Node* right
+Node : -T* data
+Node : +Node* getLeft()
+Node : +Node* getRight()
+Node : +Node* getData()
+Node : +void setLeft()
+Node : +void setRight()
+Node : +void setData()
+
+T : long id
+@enduml

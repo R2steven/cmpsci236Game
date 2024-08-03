@@ -1,0 +1,14 @@
+@startuml
+GameEngine -> EventManager : getEvent()
+EventManager -> GameEngine : Event e
+GameEngine -> Party : getNextChar()
+Party -> GameEngine : Character char
+GameEngine -> Character : char.getWeightedActions()
+Character -> CharClass : getActions()
+CharClass -> BST : getDepth(Action a)
+BST -> CharClass : int depth
+CharClass -> Character : map<Action a, int depth>
+Character -> BST : getDepth(Action a)
+BST -> Character : int depth
+Character -> GameEngine : map<Action a, int depth>
+@enduml
