@@ -1,0 +1,18 @@
+@startuml Encounter
+
+state PlayingGame {
+    Encounter --> Move : succeed
+    Move --> Encounter : left
+    Move --> Encounter : right
+}
+
+[*] --> Encounter
+Encounter --> Lose : fail
+Encounter --> Win : on win
+
+Encounter : list of story options
+Encounter : list of resolutions
+
+Move: navigate the map
+
+@enduml

@@ -1,0 +1,68 @@
+@startuml Game Story BST
+state in_cell {
+    state Encounter_1L
+    Encounter_1L : - charm guard
+    Encounter_1L : - overpower guard
+    Encounter_1L --> move_on_1L <<exitPoint>>
+}
+
+state in_cell_block {
+    state Encounter_1L2L
+    Encounter_1L2L : - sneak and let prisoners out \nfor distraction
+    Encounter_1L2L --> move_on_1L2L <<exitPoint>>
+    
+    state Encounter_1L2R
+    Encounter_1L2R : - fight and start riot
+    Encounter_1L2R : - intimidate guards to release \nprisoners
+    Encounter_1L2R --> move_on_1L2R <<exitPoint>>
+}
+
+state in_cell_block_alarm {
+    state Encounter_1L2L3L
+    Encounter_1L2L3L : - sneak out of block during commotion
+    Encounter_1L2L3L --> move_on_1L2L3L <<exitpoint>>
+    
+    state Encounter_1L2R3L
+    Encounter_1L2R3L : - intimidate single guard to let you pass
+    Encounter_1L2R3L --> move_on_1L2R3L <<exitpoint>>
+    
+    state Encounter_1L2R3R
+    Encounter_1L2R3R : - defeat guards with inmates and leave block
+    Encounter_1L2R3R --> move_on_1L2R3R <<exitpoint>>
+}
+
+state in_wardens_office {
+    state Encounter_1L2L3L4L
+    Encounter_1L2L3L4L : - intimidate warden
+    Encounter_1L2L3L4L : - sneak in and get key
+    Encounter_1L2L3L4L --> move_on_1L2L3L4L <<exitpoint>>\
+
+    state Encounter_1L2R3L4L
+    Encounter_1L2R3L4L : - intimidate warden
+    Encounter_1L2R3L4L : - sneak in and get key let you pass
+    Encounter_1L2R3L4L --> move_on_1L2R3L4L <<exitpoint>>
+
+    state Encounter_1L2R3R4L
+    Encounter_1L2R3R4L : - commandeer wardens office and get key
+    Encounter_1L2R3R4L --> move_on_1L2R3R4L <<exitpoint>>
+}
+
+state in_shuttle_bay {
+
+}
+
+state in_shuttle {
+    
+}
+
+[*] --> Encounter_1L
+move_on_1L --> Encounter_1L2L
+move_on_1L --> Encounter_1L2R
+move_on_1L2L --> Encounter_1L2L3L
+move_on_1L2R --> Encounter_1L2R3R
+move_on_1L2R --> Encounter_1L2R3L
+move_on_1L2L3L --> Encounter_1L2L3L4L
+move_on_1L2R3L --> Encounter_1L2R3L4L
+move_on_1L2R3R --> Encounter_1L2R3R4L
+shuttle_escpe --> [*]
+@enduml

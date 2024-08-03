@@ -36,4 +36,5 @@ Node : +void setRight()
 Node : +void setData()
 
 T : long id
+T : int position
 @enduml

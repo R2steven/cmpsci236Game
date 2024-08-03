@@ -1,0 +1,34 @@
+@startuml Party_Design
+interface Player
+interface CharDeck
+class PlayerParty
+class EncounterParty
+class Character
+
+CharDeck <|-- PlayerParty
+Player <|-- PlayerParty
+PlayerParty o-- Character
+CharDeck <|-- EncounterParty
+EncounterParty o-- Character
+
+
+CharDeck : List<Character*> members
+CharDeck : +Character* getNextChar()
+CharDeck : +void shuffleChars()
+CharDeck : +void addChar()
+
+
+Player : +void addPlayer()
+
+
+note left of PlayerParty : holds queue of members,\nmultiplayer opportunity
+PlayerParty : -long ID
+PlayerParty : -String partyName
+PlayerParty : -LList<Character*> members
+PlayerParty : +//mutators()
+
+
+EncounterParty : -long ID
+EncounterParty : -String EncounterName
+EncounterParty : -LList<Character*> members
+@enduml

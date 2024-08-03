@@ -1,0 +1,73 @@
+@startuml Game_Story
+enum ActionType
+ActionType : charm
+ActionType : stealth
+ActionType : strength
+
+class encounter
+encounter : ActionType
+
+() start
+() win
+
+package in_cell <<Frame>> {
+    () start_in_cell
+    start_in_cell : charm gaurd
+    start_in_cell : overpower guard
+}
+
+package in_cell_block <<Frame>> {
+    () node_1
+    node_1 : sneak and let prisoners out
+    () node_2
+    node_2 : fight and let prisoners out
+    node_2 : intimidate guards to let prisoners out
+}
+
+package in_cell_block_alarm <<Frame>> {
+    () node_3
+    node_3 : sneak out of block during commotion
+    () node_4
+    node_4 : intimidate single guard to let you pass
+    () node_5
+    node_5 : defeat guards with inmates and leave block
+}
+
+package in_wardens_office <<Frame>> {
+    () node_6
+    node_6 : intimidate warden
+    node_6 : sneak in and get key
+    () node_7
+    node_7 : commandeer wardens office and get key
+}
+
+package in_shuttle_bay <<Frame>> {
+    () node_8 
+    node_8 : negotiate with corrupt guard to let you go
+    () node_9 
+    node_9 : defeat shuttle guard
+}
+
+package in_shuttle <<Frame>> {
+    () end_free
+    end_free : defend shuttle from guards
+    end_free : negotiate with freighter
+    end_free : create distraction to escape
+}
+
+start --> start_in_cell
+start_in_cell --> node_1 : left
+start_in_cell --> node_2 : right
+node_1 --> node_3
+node_2 --> node_4
+node_2 --> node_5
+node_3 --> node_6
+node_4 --> node_6
+node_5 --> node_7
+node_6 --> node_8
+node_6 --> node_9
+node_7 --> node_9
+node_8 --> end_free
+node_9 --> end_free
+end_free --> win
+@enduml

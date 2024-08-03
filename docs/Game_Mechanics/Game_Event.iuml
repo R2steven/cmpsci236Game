@@ -1,0 +1,18 @@
+@startuml Game_Event
+interface Event
+interface EventHandler
+class ModifyDeck
+class ModifyInv
+class Encounter
+
+EventHandler <|-- ModifyDeck
+EventHandler <|-- ModifyInv
+EventHandler <|-- Encounter
+
+EventHandler : +void notify(Event e)
+
+Encounter : -Player* player
+Encounter : -EncounterParty* encounter
+Encounter : -Queue<Character*> CharOrder
+Encounter : void play()
+@enduml
