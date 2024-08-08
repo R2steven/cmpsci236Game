@@ -12,8 +12,6 @@ add_subdirectory(src)
 
 # The directory where we will keep out main game
 add_subdirectory(236Game)
-
-add_subdirectory(extern)
 # The directory where we will keep our tests
 include(CTest)
 add_subdirectory(test)

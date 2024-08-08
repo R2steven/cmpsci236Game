@@ -1,3 +1,6 @@
+# Project Setup:
+Take a look at our [Getting Started](https://github.com/R2steven/cmpsci236Game/blob/master/docs/GettingStarted.md) page for downloading and installing the tools we will be using for this project!
+
 # Data Structures
 we plan on using two data structures for different uses in this Project: A Linked List and a Binary Search Tree
 
