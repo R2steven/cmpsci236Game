@@ -8,6 +8,9 @@ If you have any issues feel free to contact:
 You will need the following tools to configure the project (we reccommend you follow the [Configuration Steps](#configuration-steps) Below):
   - [GitHub](https://github.com/)
   - [Microsoft VS Code](https://code.visualstudio.com/docs)
+You will need the following tools to configure the project (we reccommend you follow the [Configuration Steps](#configuration-steps) Below):
+  - [GitHub](https://github.com/)
+  - [Microsoft VS Code](https://code.visualstudio.com/docs)
   - [A C++ Compiler](https://code.visualstudio.com/docs/languages/cpp)
   - [git](https://git-scm.com/downloads)
   - [CMake](https://cliutils.gitlab.io/modern-cmake/)
