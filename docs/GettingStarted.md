@@ -43,11 +43,11 @@ Vscode is highly configureable, which is both a blessing and a curse. On the one
       2) in the search bar again, type in "ruler". this should bring up the "Editor:Rulers" option.
       3) under "Editor:Rulers", it should say "Edit in settings.json". click on this link
       4) you should see a .json file named "settings.json" open in the text editor with a option "editor.rulers": []. Within the brackets "[]" type in the number 80. settings.json should look like 
-
-    {
+       ```
+      {
         "editor.rulers": [80]
-    }
-
+      }
+      ```
       5) save the file by pressing the keybind "ctrl+s" (read as "control s", press the ctrl button and then the s button)
       6) you should see a thin line appear to the right in your text editor. This is the max length we should make any one line.
       7) close the settings.json file in the editor and return to your settings page.
@@ -144,6 +144,7 @@ You may now notice that your source control card in vscode has hundreds of new f
   1) in the vscode file explorer card, select the option to "add file" and name it .gitignore
   2) open the .gitignore file and add the following:
 
+```
     # gitignore #
     .gitignore
 
@@ -152,7 +153,7 @@ You may now notice that your source control card in vscode has hundreds of new f
 
     # cmake build dir #
     build/
-
+```
   3) save and close the .gitignore file, and all those pesky files should no longer be tracked
 
 Lastly we need to tell CMake to pull up a console terminal so we can see the output of our code.
@@ -160,11 +161,11 @@ Lastly we need to tell CMake to pull up a console terminal so we can see the out
   1) press the hotkey cntl+shift+p to bring up our vscode command prompt
   2) Type in "settings.json" and select the option "Preferences: Open Workspace Settings (JSON). This will open a settings.json for your workspace.
   3) within the brackets, enter the following:
-    
+```    
     "cmake.debugConfig": {
         "externalConsole": true,
     }
-
+```
   4) save and close the settings.json file
   5) open the cpp file 236Game/GameApp.cpp in your editor
   6) find the main method, and left click on the just to the left of the line number
