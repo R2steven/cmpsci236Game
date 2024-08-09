@@ -8,7 +8,6 @@ If you have any issues feel free to contact:
 You will need the following tools to configure the project (we reccommend you follow the [Configuration Steps](#configuration-steps) Below):
   - [GitHub](https://github.com/)
   - [Microsoft VS Code](https://code.visualstudio.com/docs)
-You will need the following tools to configure the project (we reccommend you follow the [Configuration Steps](#configuration-steps) Below):
   - [GitHub](https://github.com/)
   - [Microsoft VS Code](https://code.visualstudio.com/docs)
   - [A C++ Compiler](https://code.visualstudio.com/docs/languages/cpp)
@@ -43,11 +42,11 @@ Vscode is highly configureable, which is both a blessing and a curse. On the one
       2) in the search bar again, type in "ruler". this should bring up the "Editor:Rulers" option.
       3) under "Editor:Rulers", it should say "Edit in settings.json". click on this link
       4) you should see a .json file named "settings.json" open in the text editor with a option "editor.rulers": []. Within the brackets "[]" type in the number 80. settings.json should look like 
-       ```
-      {
+        ``` json
+        {
         "editor.rulers": [80]
-      }
-      ```
+        }
+        ```
       5) save the file by pressing the keybind "ctrl+s" (read as "control s", press the ctrl button and then the s button)
       6) you should see a thin line appear to the right in your text editor. This is the max length we should make any one line.
       7) close the settings.json file in the editor and return to your settings page.
@@ -161,7 +160,7 @@ Lastly we need to tell CMake to pull up a console terminal so we can see the out
   1) press the hotkey cntl+shift+p to bring up our vscode command prompt
   2) Type in "settings.json" and select the option "Preferences: Open Workspace Settings (JSON). This will open a settings.json for your workspace.
   3) within the brackets, enter the following:
-```    
+```json
     "cmake.debugConfig": {
         "externalConsole": true,
     }

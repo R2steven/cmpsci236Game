@@ -1,17 +1,17 @@
-@startuml
-class GameApp
+@startuml App_design
 
-Interface GameEventListener
-EventListener : input(char input)
+class App
+App : void main()
 
-Interface EventManager
-EventManager : void addListener(EventListener*)
-EventManager : void removeListener(EvenetListener*)
-EventManager : void notify()
+class Engine
+Engine : Renderer
+Engine : std::vector<EventListener*> inputListerners
+Engine : void run()
 
-class GameEngine
-GameEngine : Renderer
-GameEngine : std::vector<EventListener*> inputListerners
+
+interface RenderQueue
+RenderQueue : void pushRenderable(renderable*)
+RenderQueue : void pushRenderable(List<renderable*> list)
 
 
 class Renderer
@@ -21,16 +21,15 @@ Renderer : void render()
 Renderer : Queue<renderable*>*
 
 
-class GameEventManager 
-GameEventManager : List<> storypoints
-GameEventManager : Renderer* outputStream
-GameEventManager : input(char input)
+class EventManager 
+EventManager : List<> storypoints
+EventManager : Renderer* outputStream
+EventManager : input(char input)
 
 
-EventManager <|-- GameEngine
-
-
-
-
-
+App *--Engine
+Engine *-- Renderer
+Engine o-- EventManager
+RenderQueue <|-- Renderer
+EventManager *-- RenderQueue
 @enduml

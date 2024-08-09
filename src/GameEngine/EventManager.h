@@ -11,16 +11,16 @@
 
 namespace Game236{
 
-class EventManager{
-    public:
-        EventManager(std::shared_ptr<RenderEngine>);
+class EventManager  {
+  public:
+    EventManager(std::shared_ptr<RenderEngine>);
 
-        virtual void input(char in) = 0;
+    virtual void input(char in) = 0;
 
-    private:
-        virtual void pushRenderables() = 0;
+  private:
+    virtual void pushRenderables() = 0;
 
-        std::shared_ptr<RenderEngine> renderer; //subject to change
+    std::shared_ptr<RenderEngine> renderer; //subject to change
 };
 }
 #endif

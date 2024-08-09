@@ -19,7 +19,8 @@ const int SCREEN_HEIGHT = 26;
  * configure and run a specific game instance
  */
 int main() {
-    std::shared_ptr<GameEngine> game = std::make_shared<Engine>(SCREEN_WIDTH, SCREEN_HEIGHT);
-    game->run();
-    return 0;
+  std::shared_ptr<GameEngine> game = 
+    std::make_shared<Engine>(SCREEN_WIDTH, SCREEN_HEIGHT);
+  game->run();
+  return 0;
 }

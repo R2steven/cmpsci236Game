@@ -15,8 +15,8 @@
 namespace Game236   {
 
 class GameEngine    {
-    public:
-        virtual void run() = 0;
+  public:
+    virtual void run() = 0;
 };
 }
 #endif
