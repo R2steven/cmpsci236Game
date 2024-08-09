@@ -14,4 +14,5 @@ add_subdirectory(src)
 add_subdirectory(236Game)
 # The directory where we will keep our tests
 include(CTest)
+enable_testing()
 add_subdirectory(test)
