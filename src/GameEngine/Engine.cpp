@@ -13,31 +13,43 @@
 #include <conio.h>
 
 #include "Engine.h"
+#include "ConsoleRenderer.h"
 
- using namespace std::chrono_literals;
+using namespace std::chrono_literals;
 namespace Game236 {
 
-  Engine::Engine()  {
-    renderer = std::make_shared<RenderEngine>();
-    _running = true;
+  ConsoleEngine::ConsoleEngine()  :
+    renderer(new ConsoleRenderer())//,
+    //eventManager(std::make_unique<EventManager>())  
+  {
+    _running = false;
   }
 
-  Engine::Engine(int width, int height) {
-    renderer = std::make_shared<RenderEngine>(width, height);
-    _running = true;
+  ConsoleEngine::ConsoleEngine(int width, int height) : 
+    renderer(new ConsoleRenderer(width, height))//,
+    //eventManager(std::make_unique<EventManager>()) 
+  {
+    _running = false;
   }
 
-  void Engine::run()  {
-    std::string hWorld = "Hello World!";
-    renderer->pushRenderable(&hWorld);
+  void ConsoleEngine::run()  {
+    _running = true;
     while(_running) {
       renderer->render();
       getInput();
-      std::this_thread::sleep_for(50ms);
+      std::this_thread::sleep_for(20ms);
     }
   }
 
-  void Engine::getInput() {
+  RenderEngine* ConsoleEngine::getRenderer() {
+    return renderer.get();
+  }
+
+  /**EventManager* ConsoleEngine::getEventManager() {
+    return eventManager.get();
+  }*/
+
+  void ConsoleEngine::getInput() {
     if(_kbhit()){
       char current = _getch();
 
@@ -46,7 +58,7 @@ namespace Game236 {
         break;
       case 'Q': _running = false;
         break;
-      //default: eventManager->input(current);
+      //default: eventManager->processInput(current);
       }
     }
   }
