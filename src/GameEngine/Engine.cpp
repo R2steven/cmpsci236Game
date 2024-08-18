@@ -8,23 +8,58 @@
   */
 
 #include <iostream>
-#include <time.h>
+#include <thread>
+#include <chrono>
 #include <conio.h>
 
 #include "Engine.h"
+#include "ConsoleRenderer.h"
 
+using namespace std::chrono_literals;
+namespace Game236 {
 
-namespace Game236   {
+  ConsoleEngine::ConsoleEngine()  :
+    renderer(new ConsoleRenderer())//,
+    //eventManager(std::make_unique<EventManager>())  
+  {
+    _running = false;
+  }
 
-    Engine::Engine()    {
+  ConsoleEngine::ConsoleEngine(int width, int height) : 
+    renderer(new ConsoleRenderer(width, height))//,
+    //eventManager(std::make_unique<EventManager>()) 
+  {
+    _running = false;
+  }
 
+  void ConsoleEngine::run()  {
+    _running = true;
+    while(_running) {
+      renderer->render();
+      getInput();
+      std::this_thread::sleep_for(20ms);
     }
+  }
 
-    Engine::Engine(int width, int height)   {
-        
-    }
+  RenderEngine* ConsoleEngine::getRenderer() {
+    return renderer.get();
+  }
 
-    void Engine::run()  {
-        std::cout << "Hello World!";
+  /**EventManager* ConsoleEngine::getEventManager() {
+    return eventManager.get();
+  }*/
+
+  void ConsoleEngine::getInput() {
+    if(_kbhit()){
+      char current = _getch();
+
+      switch(current){
+      case 'q': _running = false;
+        break;
+      case 'Q': _running = false;
+        break;
+      //default: eventManager->processInput(current);
+      }
     }
+  }
 }

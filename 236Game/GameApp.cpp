@@ -6,20 +6,23 @@
  * restevens52@gmail.com
  * 8/6/2024
  */
-#include <memory>
-
-#include <GameEngine.h>
-#include <Engine.h>
+#include "Engine.h"
+#include "scenes.cpp"
 
 using namespace Game236;
 const int SCREEN_WIDTH = 90;
-const int SCREEN_HEIGHT = 26;
+const int SCREEN_HEIGHT = 70;
 
 /**
  * configure and run a specific game instance
  */
 int main() {
-    std::shared_ptr<GameEngine> game = std::make_shared<Engine>(SCREEN_WIDTH, SCREEN_HEIGHT);
-    game->run();
-    return 0;
+  std::unique_ptr<GameEngine> game = 
+    std::make_unique<ConsoleEngine>();
+  RenderEngine*  engine = game->getRenderer();
+  auto obj = makeCellRenderable();
+  engine->registerRenderable(obj);
+  engine->updateWorld(obj->id, 'a');
+  game->run();
+  return 0;
 }
